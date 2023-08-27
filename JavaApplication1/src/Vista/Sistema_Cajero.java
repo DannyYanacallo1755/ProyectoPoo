@@ -4,17 +4,49 @@
  */
 package Vista;
 
+import Modelo.Cliente;
+import Modelo.Cliente2;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author LENOVO
  */
 public class Sistema_Cajero extends javax.swing.JFrame {
+    Cliente cl=new Cliente();
+    Cliente2 client=new Cliente2();
+    DefaultTableModel modelo = new DefaultTableModel();
+  
 
     /**
      * Creates new form Sistema_Cajero
      */
     public Sistema_Cajero() {
         initComponents();
+    }
+    public void ListarCliente() {
+        List<Cliente> ListarCl = client.ListarCliente();
+        modelo = (DefaultTableModel) TablaCliente.getModel();
+        Object[] ob = new Object[6];
+        for (int i = 0; i < ListarCl.size(); i++) {
+            ob[0] = ListarCl.get(i).getId();
+            ob[1] = ListarCl.get(i).getDni();
+            ob[2] = ListarCl.get(i).getNombre();
+            ob[3] = ListarCl.get(i).getTelefono();
+            ob[4] = ListarCl.get(i).getDireccion();
+            modelo.addRow(ob);
+        }
+        TablaCliente.setModel(modelo);
+
+    }
+    
+    public void LimpiarTable() {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i = i - 1;
+        }
     }
 
     /**
@@ -141,6 +173,11 @@ public class Sistema_Cajero extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cliente-removebg-preview.png"))); // NOI18N
         jButton2.setText("Clientes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Proveedor-removebg-preview.png"))); // NOI18N
         jButton3.setText("Proveedor");
@@ -270,6 +307,12 @@ public class Sistema_Cajero extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel15.setText("Razon Social:");
 
+        txtDniCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDniClienteActionPerformed(evt);
+            }
+        });
+
         TablaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -289,6 +332,11 @@ public class Sistema_Cajero extends javax.swing.JFrame {
 
         BotonGuardarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Guardar-removebg-preview.png"))); // NOI18N
         BotonGuardarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonGuardarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonGuardarClienteActionPerformed(evt);
+            }
+        });
 
         BotonEditarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Actualizar-removebg-preview.png"))); // NOI18N
         BotonEditarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -892,6 +940,35 @@ public class Sistema_Cajero extends javax.swing.JFrame {
     private void txtIdProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdProActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdProActionPerformed
+
+    private void BotonGuardarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarClienteActionPerformed
+    
+        // TODO add your handling code here:
+        
+        if(!"".equals(txtDniCliente.getText())||!"".equals(txtNombreCliente.getText())||!"".equals(txtTelefonoCliente.getText()) || !"".equals(txtDireccionCliente.getText()) ){
+            cl.setDni(Integer.parseInt(txtDniCliente.getText()));
+            cl.setNombre(txtNombreCliente.getText());
+            cl.setTelefono(Integer.parseInt(txtTelefonoCliente.getText()));
+            cl.setDireccion(txtDireccionCliente.getText());
+            cl.setRazon(txtRazonCliente.getText());
+            client.RegistrarCliente(cl);
+            JOptionPane.showMessageDialog(null, "Cliente Registrado");
+        }else{
+            JOptionPane.showMessageDialog(null, "Los campos estan vacios");
+        }
+    }//GEN-LAST:event_BotonGuardarClienteActionPerformed
+
+    private void txtDniClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniClienteActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        LimpiarTable();
+        ListarCliente();
+        jTabbedPane1.setSelectedIndex(1);
+     
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
