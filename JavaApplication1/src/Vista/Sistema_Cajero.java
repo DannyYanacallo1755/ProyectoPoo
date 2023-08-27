@@ -25,6 +25,7 @@ public class Sistema_Cajero extends javax.swing.JFrame {
      */
     public Sistema_Cajero() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
     public void ListarCliente() {
         List<Cliente> ListarCl = client.ListarCliente();
@@ -211,7 +212,7 @@ public class Sistema_Cajero extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(70, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(34, 34, 34)
                 .addComponent(jButton2)
@@ -226,7 +227,7 @@ public class Sistema_Cajero extends javax.swing.JFrame {
                 .addGap(26, 26, 26))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 560));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 180, 580));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 0, 520, 100));
@@ -285,7 +286,7 @@ public class Sistema_Cajero extends javax.swing.JFrame {
                     .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addComponent(jButton23)
                 .addGap(76, 76, 76))
         );
@@ -321,6 +322,11 @@ public class Sistema_Cajero extends javax.swing.JFrame {
                 "DNII/RUC", "NOMBRE", "TELEFONO", "DIRECCION", "RAZON SOCIAL"
             }
         ));
+        TablaCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaClienteMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(TablaCliente);
         if (TablaCliente.getColumnModel().getColumnCount() > 0) {
             TablaCliente.getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -343,6 +349,11 @@ public class Sistema_Cajero extends javax.swing.JFrame {
 
         BotonEliminarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Eliminar-removebg-preview.png"))); // NOI18N
         BotonEliminarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BotonEliminarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonEliminarClienteActionPerformed(evt);
+            }
+        });
 
         BotonNuevoCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/nuevo-removebg-preview.png"))); // NOI18N
         BotonNuevoCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -432,7 +443,7 @@ public class Sistema_Cajero extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BotonEliminarCliente)
                             .addComponent(BotonNuevoCliente))))
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab2", jPanel4);
@@ -556,7 +567,7 @@ public class Sistema_Cajero extends javax.swing.JFrame {
                             .addComponent(BotonNuevoProveedor)
                             .addComponent(BotonEliminarProveedor)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab3", jPanel5);
@@ -636,7 +647,7 @@ public class Sistema_Cajero extends javax.swing.JFrame {
                                             .addComponent(txtDescPro)
                                             .addComponent(txtCantidadPro)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                                         .addComponent(txtCodigoPro, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -655,7 +666,7 @@ public class Sistema_Cajero extends javax.swing.JFrame {
                         .addGap(62, 62, 62)
                         .addComponent(BotonExcelPro)
                         .addGap(98, 98, 98)))
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -736,7 +747,7 @@ public class Sistema_Cajero extends javax.swing.JFrame {
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(BotonPDFVentas, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtIdVenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -904,12 +915,12 @@ public class Sistema_Cajero extends javax.swing.JFrame {
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(labelTotal))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", jPanel8);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 720, 450));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 720, 480));
 
         jPanel3.setBackground(new java.awt.Color(174, 208, 243));
 
@@ -952,6 +963,9 @@ public class Sistema_Cajero extends javax.swing.JFrame {
             cl.setDireccion(txtDireccionCliente.getText());
             cl.setRazon(txtRazonCliente.getText());
             client.RegistrarCliente(cl);
+            LimpiarTable();
+            LimpiarCliente();
+            ListarCliente();
             JOptionPane.showMessageDialog(null, "Cliente Registrado");
         }else{
             JOptionPane.showMessageDialog(null, "Los campos estan vacios");
@@ -969,6 +983,36 @@ public class Sistema_Cajero extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(1);
      
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void BotonEliminarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarClienteActionPerformed
+        // TODO add your handling code here:
+        if(!"".equals(txtIdCliente.getText())){
+            int pregunta= JOptionPane.showConfirmDialog(null,"Esta seguro de eliminar");
+            if(pregunta==0){
+                int id= Integer.parseInt(txtIdCliente.getText());
+                client.EliminarCliente(id);
+                LimpiarTable();
+                LimpiarCliente();
+                ListarCliente();
+                
+            }
+        }
+        
+        
+    
+    }//GEN-LAST:event_BotonEliminarClienteActionPerformed
+
+    private void TablaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaClienteMouseClicked
+        // TODO add your handling code here:
+        int fila=TablaCliente.rowAtPoint(evt.getPoint());
+        txtIdCliente.setText(TablaCliente.getValueAt(fila, 0).toString());
+        txtDniCliente.setText(TablaCliente.getValueAt(fila, 1).toString());
+        txtNombreCliente.setText(TablaCliente.getValueAt(fila, 2).toString());
+        txtTelefonoCliente.setText(TablaCliente.getValueAt(fila, 3).toString());
+        txtDireccionCliente.setText(TablaCliente.getValueAt(fila, 4).toString());
+        txtRazonCliente.setText(TablaCliente.getValueAt(fila, 5).toString());
+        
+    }//GEN-LAST:event_TablaClienteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1111,4 +1155,14 @@ public class Sistema_Cajero extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelefonoClienteVenta;
     private javax.swing.JTextField txtTelefonoProveedor;
     // End of variables declaration//GEN-END:variables
+
+     private void LimpiarCliente(){
+         txtIdCliente.setText("");
+         txtDniCliente.setText("");
+         txtNombreCliente.setText("");
+         txtTelefonoCliente.setText("");
+         txtDireccionCliente.setText("");
+         txtRazonCliente.setText("");
+     }
+
 }
